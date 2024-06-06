@@ -2,8 +2,9 @@ import { useState } from 'react'
 import getWeather from './getWeather.js'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import logo from './img/weatherApp-logo.webp'
-import Search from './components/Search.jsx'; import WeatherNow from './components/WeatherNow.jsx';
-
+import Search from './components/Search.jsx'; import NowCard from './components/NowCard.jsx'; 
+import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
+ TodayHighlights
 function App() {
 
   return (
@@ -18,9 +19,12 @@ function App() {
           <i className="bi bi-geo-alt px-2.5 py-1.5 bg-indigo-700 rounded-full cursor-pointer hover:bg-indigo-600"></i>
         </div>
       </header>
+      
       <main className='bg-blackPri py-4 font-mono'>
-        <WeatherNow />
-        <h4 className='pt-3 px-4 pb-1.5'>5 Days Forecast</h4>
+        <NowCard />
+        <h4 className='pt-3 pb-1.5 font-semibold w-[92%] mx-auto '>5 Days Forecast</h4>
+        <WeekCard />
+        <TodayHighlights />
       </main>
     </>
   )

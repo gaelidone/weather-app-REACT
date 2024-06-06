@@ -1,6 +1,6 @@
-function WeatherNow({ }) {
+function NowCard({ }) {
   return(
-    <section className="bg-blackSec max-w-[90%] mx-auto p-4 rounded-xl flex flex-col gap-1">
+    <section className="card-sect max-w-[90%] flex-col gap-1">
       <p className="text-gray-400">Now</p>
       <div className="flex items-center text-4xl">
         <h4 className="w-[55%]">22°c</h4>
@@ -17,4 +17,4 @@ function WeatherNow({ }) {
 }
 
 
-export default WeatherNow;
+export default NowCard;
