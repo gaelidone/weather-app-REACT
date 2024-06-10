@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import getWeather from './getWeather.js'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'; import 'bootstrap/dist/css/bootstrap.min.css'; import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import logo from './img/weatherApp-logo.webp'
-import Search from './components/Search.jsx'; import NowCard from './components/NowCard.jsx'; 
+import Search from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
 import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
- TodayHighlights
+import WrapToday from './components/WrapToday.jsx';
+
 function App() {
 
   return (
@@ -19,13 +20,26 @@ function App() {
           <i className="bi bi-geo-alt px-2.5 py-1.5 bg-indigo-700 rounded-full cursor-pointer hover:bg-indigo-600"></i>
         </div>
       </header>
-      
+
       <main className='bg-blackPri py-4 font-mono'>
         <NowCard />
         <h4 className='pt-3 pb-1.5 font-semibold w-[92%] mx-auto '>5 Days Forecast</h4>
         <WeekCard />
         <TodayHighlights />
+        <div>
+          <WrapToday />
+        </div>
       </main>
+
+      <footer className="bg-blackSec text-white py-4">
+        <div className="container mx-auto text-center">
+          <p className="mb-2">&copy; 2024 gaelidone. All Rights Reserved</p>
+          <p className="mb-2">Powered by OpenWeatherMap API.</p>
+          <a href="https://github.com/gaelidone" target="_blank" rel="noopener noreferrer" className="mx-2">
+            <i className="bi bi-github text-3xl"></i>
+          </a>
+        </div>
+      </footer>
     </>
   )
 }
