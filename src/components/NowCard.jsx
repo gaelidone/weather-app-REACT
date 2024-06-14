@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import getWeather from "../getWeather";
+import useFetchData from "../hooks/useFetchData";
 
 function NowCard({ city }) {
-  const [weatherData, setWeatherData] = useState(null); // Inicializar con null o un objeto vacío {}
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getWeather(city);
-        setWeatherData(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [city]);
+  const fetchWeather = useCallback(() => getWeather(city), [city]);
+  const { data: weatherData, isLoading, error } = useFetchData(fetchWeather);
 
   if (isLoading) {
     return <p>Loading...</p>;

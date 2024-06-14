@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import getWeather from './getWeather.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'; import 'bootstrap/dist/css/bootstrap.min.css'; import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import logo from './img/weatherApp-logo.webp'
 import Search from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
