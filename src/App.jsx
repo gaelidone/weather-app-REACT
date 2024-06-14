@@ -22,7 +22,7 @@ function App() {
       </header>
 
       <main className='bg-blackPri py-4 font-mono'>
-        <NowCard />
+        <NowCard city="Buenos Aires"/>
         <h4 className='pt-3 pb-1.5 font-semibold w-[92%] mx-auto '>5 Days Forecast</h4>
         <WeekCard />
         <TodayHighlights />
