@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import getWeather from "../getWeather";
+import { getWeather } from "../getWeather.js"
 import useFetchData from "../hooks/useFetchData";
 
 function NowCard({ city }) {
@@ -13,7 +13,6 @@ function NowCard({ city }) {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
   return (
     <section className="card-sect max-w-[90%] flex-col gap-1">
       <p className="text-gray-400">Now</p>

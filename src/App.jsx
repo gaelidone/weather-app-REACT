@@ -6,7 +6,7 @@ import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from '.
 import WrapToday from './components/WrapToday.jsx';
 
 function App() {
-
+  const ciudad = "Marcos Paz"
   return (
     <>
       <header className='bg-blackPri flex items-center justify-between px-4 py-2.5'>
@@ -21,9 +21,9 @@ function App() {
       </header>
 
       <main className='bg-blackPri py-4 font-mono'>
-        <NowCard city="Buenos Aires"/>
+        <NowCard city={ciudad}/>
         <h4 className='pt-3 pb-1.5 font-semibold w-[92%] mx-auto '>5 Days Forecast</h4>
-        <WeekCard />
+        <WeekCard city={ciudad}/>
         <TodayHighlights />
         <div>
           <WrapToday />
