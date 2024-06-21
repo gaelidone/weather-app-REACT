@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { getWeather } from "../getWeather.js"
+import { getWeather } from "../functions/getWeather.js"
 import useFetchData from "../hooks/useFetchData";
 
 function NowCard({ city }) {

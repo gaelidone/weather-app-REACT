@@ -1,5 +1,5 @@
 import Days from "./Days";
-import { getWeekDays } from "../getWeather";
+import { getWeekDays } from "../functions/getWeather";
 import { useCallback, useEffect } from "react";
 import useFetchData from "../hooks/useFetchData";
 
