@@ -24,7 +24,7 @@ export const getWeekDays = async (city) =>{
     }
     const data = await res.json()
     const arrayWeek = getArrayWeek(data);
-    console.log(arrayWeek[0])
+
     return arrayWeek;
 
   } catch (error) {

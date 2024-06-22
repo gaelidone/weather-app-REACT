@@ -6,7 +6,7 @@ import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from '.
 import WrapToday from './components/WrapToday.jsx';
 
 function App() {
-  const ciudad = "Marcos Paz"
+  const ciudad = "new york"
   return (
     <>
       <header className='bg-blackPri flex items-center justify-between px-4 py-2.5'>
@@ -44,6 +44,3 @@ function App() {
 }
 
 export default App
-
-
-
