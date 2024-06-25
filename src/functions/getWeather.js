@@ -8,6 +8,7 @@ export const getWeather = async (city) => {
       throw new Error('Network response was not ok');
     }
     const data = await res.json();
+    const dataWeek = getWeekDays(city);
     return data;
   } catch (error) {
     console.log(error);
@@ -31,7 +32,7 @@ export const getWeekDays = async (city) =>{
     throw error
   }
 }
-getWeekDays("Marcos Paz")
+
 
 
 

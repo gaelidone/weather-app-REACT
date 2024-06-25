@@ -1,13 +1,6 @@
 import { getIcons, getWeatherIcon } from "../functions/getIcons"
 
 function Days({ info, i }) {
-  // if (!info || !Array.isArray(info) || !info[i]) {
-  //   console.error('info or info[i] is undefined:', info, i);
-  //   console.log(info)
-  //   return null;
-  // }
-  console.log(info)
-
   const arrayWeather = info[i].forecast.map(w => w.weather[0].main)
   const weather = getWeatherIcon(arrayWeather);
   if (info.lenght === 6) {
