@@ -1,15 +1,17 @@
 const apiKey = '0da34ff0b705807431591ec725143c7e';
 
 export const getWeather = async (city) => {
+  let dataAPI = []
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   try {
     const res = await fetch(url);
     if (!res.ok) {
       throw new Error('Network response was not ok');
     }
-    const data = await res.json();
-    const dataWeek = getWeekDays(city);
-    return data;
+    const dataNow = await res.json();
+    const dataWeek = await getWeekDays(city);
+    dataAPI.push(dataNow, dataWeek)
+    return dataAPI;
   } catch (error) {
     console.log(error);
     throw error; 
@@ -32,9 +34,6 @@ export const getWeekDays = async (city) =>{
     throw error
   }
 }
-
-
-
 
 const getArrayWeek = (data) => {
   const days = {};
@@ -65,6 +64,3 @@ const getArrayWeek = (data) => {
 
   return Object.values(days);
 }
-
-getWeekDays("Marcos Paz");
-

@@ -10,10 +10,12 @@ export function WeatherProvider({ children, city }) {
   const { data: weatherData, isLoading, error } = useFetchData(fetchWeather);
 
   return (
-    <WeatherContext.Provider value={weatherData}>
-      <ForecastContext.Provider value={weatherData}>
-        {isLoading ? <p>Loading...</p> : error ? <p>Error: {error}</p> : children}
-      </ForecastContext.Provider>
-    </WeatherContext.Provider>
+    (weatherData &&
+      <WeatherContext.Provider value={weatherData[0]}>
+        <ForecastContext.Provider value={weatherData[1]}>
+          {isLoading ? <p>Loading...</p> : error ? <p>Error: {error}</p> : children}
+        </ForecastContext.Provider>
+      </WeatherContext.Provider>
+    )
   );
 }

@@ -1,13 +1,11 @@
 import Days from "./Days";
-import { getWeekDays } from "../functions/getWeather";
-import { useCallback, useEffect } from "react";
-import useFetchData from "../hooks/useFetchData";
+import { useContext } from "react";
+import { ForecastContext } from "../hooks/WeatherProvider";
 
 
 function WeekCard({ city }) {
-  const fetchWeather = useCallback(() => getWeekDays(city), [city]);
-  const { data: weatherData, isLoading, error } = useFetchData(fetchWeather);
-
+  const weatherData = useContext(ForecastContext);
+  
   if (weatherData) {
     return (
       <section className="card-sect flex-col max-w-[92.5%] gap-2">

@@ -3,7 +3,7 @@ import { WeatherContext } from "../hooks/WeatherProvider";
 import { getIcons, getIsNight } from "../functions/getIcons.js";
 
 function NowCard({ }) {
-  const weatherData = useContext(WeatherContext);
+  let weatherData = useContext(WeatherContext);
   let isNight = false;
 
   if (weatherData) {
