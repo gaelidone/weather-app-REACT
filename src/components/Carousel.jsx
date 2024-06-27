@@ -1,7 +1,12 @@
-import { SunCycle, Wind } from "./TodayForHours";
+import { WeatherHours, Wind } from "./TodayForHours";
+import getTempWind from "../functions/getTempWind";
+import { useContext } from "react";
+import { ForecastContext } from "../hooks/WeatherProvider";
 
 function Carousel({ id, tipo }) {
-  const ComponentToRender = tipo === "SunCycle" ? SunCycle : Wind;
+  const weatherData = useContext(ForecastContext)
+  const ComponentToRender = tipo === "Weather" ? WeatherHours : Wind;
+  const data = getTempWind(weatherData, tipo)
   
   return (
     <div className="mt-4">
@@ -10,36 +15,39 @@ function Carousel({ id, tipo }) {
           <div className="carousel-item active">
             <div className="d-flex justify-content-center gap-6">
               <div className="col-3">
-                <ComponentToRender />
+                <ComponentToRender weatherData={data[0]}/>
               </div>
               <div className="col-3">
-                <ComponentToRender />
+                <ComponentToRender weatherData={data[1]}/>
               </div>
               <div className="col-3">
-                <ComponentToRender />
+                <ComponentToRender weatherData={data[2]}/>
               </div>
             </div>
           </div>
           <div className="carousel-item">
-            <div className="d-flex justify-content-center">
-              <div className="col-4">
-                <div className="w-28 h-28 bg-red-400 mx-auto"></div>
+            <div className="d-flex justify-content-center gap-6">
+              <div className="col-3">
+                <ComponentToRender weatherData={data[3]}/>
               </div>
-              <div className="col-4">
-                <div className="w-28 h-28 bg-red-600 mx-auto"></div>
+              <div className="col-3">
+                <ComponentToRender weatherData={data[4]}/>
               </div>
-              <div className="col-4">
-                <div className="w-28 h-28 bg-blue-800 mx-auto"></div>
+              <div className="col-3">
+                <ComponentToRender weatherData={data[5]}/>
               </div>
             </div>
           </div>
           <div className="carousel-item">
-            <div className="d-flex justify-content-center">
-              <div className="col-4">
-                <div className="w-28 h-28 bg-green-300 mx-auto"></div>
+            <div className="d-flex justify-content-center gap-6">
+              <div className="col-3">
+                <ComponentToRender weatherData={data[6]}/>
               </div>
-              <div className="col-4">
-                <div className="w-28 h-28 bg-green-800 mx-auto"></div>
+              <div className="col-3">
+                <ComponentToRender weatherData={data[7]}/>
+              </div>
+              <div className="col-3">
+                <ComponentToRender weatherData={data[8]}/>
               </div>
             </div>
           </div>

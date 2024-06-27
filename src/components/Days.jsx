@@ -3,7 +3,7 @@ import { getIcons, getWeatherIcon } from "../functions/getIcons"
 function Days({ info, i }) {
   const arrayWeather = info[i].forecast.map(w => w.weather[0].main)
   const weather = getWeatherIcon(arrayWeather);
-  if (info.lenght === 6) {
+  if (info.lenght >= 6) {
     i += 1;
   }
   const getTemp = (array) => {

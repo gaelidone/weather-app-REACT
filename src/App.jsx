@@ -7,7 +7,7 @@ import WrapToday from './components/WrapToday.jsx';
 import { WeatherProvider } from './hooks/WeatherProvider';
 
 function App() {
-  const [ciudad, setCiudad] = useState("la paz");
+  const [ciudad, setCiudad] = useState("marcos paz");
 
   return (
     <WeatherProvider city={ciudad}>
@@ -25,11 +25,10 @@ function App() {
       <main className='bg-blackPri py-4 font-mono'>
         <NowCard />
         <h4 className='pt-3 pb-1.5 font-semibold w-[92%] mx-auto '>5 Days Forecast</h4>
-        <WeekCard city={ciudad}/>
+        <WeekCard />
         <TodayHighlights />
-        <div>
-          <WrapToday />
-        </div>
+        <WrapToday />
+        
       </main>
 
       <footer className="bg-blackSec text-white py-4">
