@@ -1,32 +1,17 @@
 import getSunCycle from "../functions/getSunCycle"
 
-export function AirQuality({ }) {
+export function TempMaxMin({ info }) {
   return (
     <div className="rounded-xl bg-blackPri p-2 w-[95%] mx-auto">
-      <div className="flex mb-2">
-        <p className="text-gray-400">Air Quality Index</p>
-      </div>
-      <div className="flex justify-between text-xl items-center">
-        <i className="bi bi-wind text-2xl"></i>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1">
-            <p>204</p>
-            <p className="text-gray-400 text-sm">PM25</p>
-          </div>
-          <div className="flex items-center gap-1">
-            <p>204</p>
-            <p className="text-gray-400 text-sm">PM25</p>
-          </div>
+      <p className="text-gray-400 mb-2">Temp Min and Max</p>
+      <div className="flex justify-between items-center px-4">
+        <div className="flex gap-2 items-center">
+          <i className="bi bi-thermometer-snow text-3xl text-sky-400"></i>
+          <p className="text-xl">{Math.round(info.main.temp_min)}</p>
         </div>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1">
-            <p>204</p>
-            <p className="text-gray-400 text-sm">PM25</p>
-          </div>
-          <div className="flex items-center gap-1">
-            <p>204</p>
-            <p className="text-gray-400 text-sm">PM25</p>
-          </div>
+        <div className="flex gap-2 items-center">
+          <i className="bi bi-thermometer-sun text-3xl text-red-500"></i>
+          <p className="text-xl">{Math.round(info.main.temp_max)}</p>
         </div>
       </div>
     </div>
@@ -58,14 +43,14 @@ export function Sunrise({ info }) {
   )
 }
 
-export function CardInfo({ }) {
-  return(
+export function CardInfo({ title, valueKey, unit, icon }) {
+  return (
     <div className="flex flex-col gap-2 rounded-xl bg-blackPri p-2 w-[95%] mx-auto">
-      <p className="text-gray-400">Humidity</p>
+      <p className="text-gray-400">{title}</p>
       <div className="flex justify-between px-1">
-        <i className="bi bi-droplet text-2xl"></i>
-        <p className="text-xl">56%</p>
+        <i className={`bi bi-${icon} text-2xl`}></i>
+        <p className="text-xl">{Math.round(valueKey)}{unit}</p>
       </div>
     </div>
-  )
+  );
 }
