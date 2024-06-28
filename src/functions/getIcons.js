@@ -2,8 +2,8 @@ import cloud from "../../img/cloud.webp";
 import sun from "../../img/sun.webp"; 
 import sunCloud from "../../img/sun-cloud.webp"; 
 import moon from "../../img/moon.webp";
-import rain from "../../img/rain.jpg";
-import rainTorment from "../../img/rain-torment.jpg"; 
+import rain from "../../img/rain.webp";
+import rainTorment from "../../img/rain-torment.webp"; 
 
 export const getIcons = (weatherParam, isNight) => {
   const weather = weatherParam.toLowerCase();
@@ -45,11 +45,20 @@ export const getIcons = (weatherParam, isNight) => {
 
   return icon;
 }
-export const getIcons2 = (weatherData) => {
-
-  const weather = (weatherData.weather[0].main).toLowerCase()
-  const description = weatherData.weather[0].description
-  const isNight = getIsNight(weatherData)
+export const getIcons2 = (weatherData, obj) => {
+  let weather; 
+  let description; 
+  let isNight;
+  if (weatherData) {
+    weather = (weatherData.weather[0].main).toLowerCase()
+    description = weatherData.weather[0].description
+    isNight = getIsNight(weatherData)
+  }else{
+    weather = (obj.main).toLowerCase();
+    description = obj.description;
+    isNight = false
+  }
+  
   let icon = "";
 
   if (weather === "clouds") {
@@ -67,22 +76,22 @@ export const getIcons2 = (weatherData) => {
   }else if (weather === "thunderstorm") {
     icon = rainTorment;
   }
-  console.log(isNight)
   return icon;
 }
 
 
 
 
-export const getWeatherIcon = (array) => {
+export const getWeatherIcon = (weatherData, i) => {
+  const arrayWeather = weatherData[i].forecast.map(w => w.weather[0])
   const orderArray = [];
-  for (let i = 0; i < array.length; i++) {
-    const weather = array[i];
-    const found = orderArray.find(w => w.type === weather)
+  for (let i = 0; i < arrayWeather.length; i++) {
+    const weather = arrayWeather[i];
+    const found = orderArray.find(w => w.main === weather)
     if (found) {
       found.quantity += 1;
     }else{
-      orderArray.push({ type: weather, quantity: 1 });
+      orderArray.push({ main: weather.main, description: weather.description, quantity: 1 });
     }
   }
   const mostWeather = orderArray.reduce((max,current) => (current.quantity > max.quantity ? current : max), orderArray[0])

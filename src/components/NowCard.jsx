@@ -5,12 +5,6 @@ import { getIcons2 } from "../functions/getIcons.js";
 
 function NowCard({ }) {
   let weatherData = useContext(WeatherContext);
-  let isNight;
-
-  if (weatherData) {
-    isNight = getIsNight(weatherData);
-    console.log(weatherData)
-  }
 
   return (
     weatherData && (
