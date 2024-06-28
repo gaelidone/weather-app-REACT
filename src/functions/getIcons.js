@@ -1,6 +1,11 @@
-import { getWeather } from "./getWeather";
+import cloud from "../../img/cloud.webp"; 
+import sun from "../../img/sun.webp"; 
+import sunCloud from "../../img/sun-cloud.webp"; 
+import moon from "../../img/moon.webp";
+import rain from "../../img/rain.jpg";
+import rainTorment from "../../img/rain-torment.jpg"; 
 
-export const getIcons = (weatherParam, isNight = false) => {
+export const getIcons = (weatherParam, isNight) => {
   const weather = weatherParam.toLowerCase();
   let icon = '';
   switch (weather) {
@@ -40,6 +45,34 @@ export const getIcons = (weatherParam, isNight = false) => {
 
   return icon;
 }
+export const getIcons2 = (weatherData) => {
+
+  const weather = (weatherData.weather[0].main).toLowerCase()
+  const description = weatherData.weather[0].description
+  const isNight = getIsNight(weatherData)
+  let icon = "";
+
+  if (weather === "clouds") {
+    if (description === "few clouds" && isNight === false) {
+      icon = sunCloud;
+    }else if (description === "few clouds") {
+      icon = moon;
+    }else{
+      icon = cloud;
+    }
+  }else if (weather === "clear") {
+    icon = isNight ? moon : sun;
+  }else if (weather === "rain" || weather === "drizzle") {
+    icon = rain;
+  }else if (weather === "thunderstorm") {
+    icon = rainTorment;
+  }
+  console.log(isNight)
+  return icon;
+}
+
+
+
 
 export const getWeatherIcon = (array) => {
   const orderArray = [];

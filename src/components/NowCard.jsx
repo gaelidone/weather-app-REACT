@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { WeatherContext } from "../hooks/WeatherProvider";
 import { getIcons, getIsNight } from "../functions/getIcons.js";
+import { getIcons2 } from "../functions/getIcons.js";
 
 function NowCard({ }) {
   let weatherData = useContext(WeatherContext);
-  let isNight = false;
+  let isNight;
 
   if (weatherData) {
     isNight = getIsNight(weatherData);
@@ -17,7 +18,12 @@ function NowCard({ }) {
         <p className="text-gray-400">Now</p>
         <div className="flex items-center text-4xl">
           <h4 className="w-[55%]">{Math.round(weatherData.main.temp)}°C</h4>
-          <i className={`${getIcons(weatherData.weather[0].main, isNight)}`}></i>
+          <div className="w-20 h-20">
+            <img 
+              src={getIcons2(weatherData)} 
+              alt="weather icon cartoon" 
+              className="w-full h-full object-contain"/>
+          </div>
         </div>
         <p className="text-gray-400">{weatherData.weather[0].description}</p>
         <hr className="w-[90%] mx-auto my-4 border-[#444] border-t-2" />
