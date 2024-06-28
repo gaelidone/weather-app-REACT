@@ -12,7 +12,8 @@ const getTempWind = (weatherData, type) => {
     if (type === "Weather") {
       result.push({
         "hour" : getHour(obj.dt_txt),
-        "temp" : Math.round(obj.main.temp)
+        "temp" : Math.round(obj.main.temp),
+        "weather_main": obj.weather[0].main
       })
     }else if (type === "Wind") {
       result.push({

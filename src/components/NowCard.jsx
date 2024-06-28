@@ -8,6 +8,7 @@ function NowCard({ }) {
 
   if (weatherData) {
     isNight = getIsNight(weatherData);
+    console.log(weatherData)
   }
 
   return (

@@ -28,7 +28,7 @@ export const getIcons = (weatherParam, isNight = false) => {
       icon = 'bi bi-cloud-fog';
       break;
     case "clear":
-      icon = isNight ? 'bi bi-moon' : 'bi bi-brightness-high';
+      icon = isNight ? 'bi bi-moon text-gray-300' : 'bi bi-brightness-high text-yellow-400';
       break;
     case "clouds":
       icon = 'bi bi-cloud';
