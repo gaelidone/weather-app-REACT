@@ -1,13 +1,21 @@
 import { useState } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'; import 'bootstrap/dist/css/bootstrap.min.css'; import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import logo from './img/weatherApp-logo.webp'
-import Search from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
+import { ToggleMobile } from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
 import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
 import WrapToday from './components/WrapToday.jsx';
 import { WeatherProvider } from './hooks/WeatherProvider';
 
 function App() {
-  const [ciudad, setCiudad] = useState("sidney");
+  const [ciudad, setCiudad] = useState("marcos paz");
+  const [toggle, setToggle] = useState(false)
+
+  const showToggle = () => {
+    setToggle(!toggle);
+    const body = document.getElementsByTagName('body');
+    body[0].classList.toggle('no-scroll')
+
+  }
 
   return (
     <WeatherProvider city={ciudad}>
@@ -17,9 +25,10 @@ function App() {
           <h2 className='font-mono font-bold text-xl'>WeatherApp</h2>
         </div>
         <div className="flex gap-2">
-          <Search />
+          <i onClick={showToggle} className="bi bi-search px-2.5 py-1.5 bg-blackSec rounded-full cursor-pointer hover:bg-[#555]"></i>
           <i className="bi bi-geo-alt px-2.5 py-1.5 bg-indigo-700 rounded-full cursor-pointer hover:bg-indigo-600"></i>
         </div>
+        <ToggleMobile state={toggle} close={showToggle}/>
       </header>
 
       <main className='bg-blackPri py-4 font-mono'>

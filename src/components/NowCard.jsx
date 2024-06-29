@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { WeatherContext } from "../hooks/WeatherProvider";
-import { getIcons, getIsNight } from "../functions/getIcons.js";
 import { getIcons2 } from "../functions/getIcons.js";
+
 
 function NowCard({ }) {
   let weatherData = useContext(WeatherContext);
-
   return (
     weatherData && (
       <section className="card-sect max-w-[90%] flex-col gap-1">

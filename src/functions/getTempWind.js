@@ -18,7 +18,6 @@ const getTempWind = (weatherData, type) => {
         "icon": getIcons2(obj)
       })
     }else if (type === "Wind") {
-      console.log(obj.wind.deg)
       result.push({
         "hour" : getHour(obj.dt_txt),
         "speed" : Math.round(obj.wind.speed),

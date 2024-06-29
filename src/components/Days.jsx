@@ -1,5 +1,4 @@
-import { getIcons, getWeatherIcon } from "../functions/getIcons"
-import { getIcons2 } from "../functions/getIcons";
+import { getIcons2, getWeatherIcon } from "../functions/getIcons"
 
 function Days({ i, weatherData }) {
   const iconWeather = getWeatherIcon(weatherData, i)

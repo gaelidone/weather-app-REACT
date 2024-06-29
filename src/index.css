@@ -5,3 +5,7 @@
 .card-sect {
   @apply bg-blackSec mx-auto p-4 rounded-xl flex;
 }
+
+.no-scroll {
+  overflow-y: hidden;
+}
