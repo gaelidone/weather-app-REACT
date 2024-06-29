@@ -7,7 +7,7 @@ import WrapToday from './components/WrapToday.jsx';
 import { WeatherProvider } from './hooks/WeatherProvider';
 
 function App() {
-  const [ciudad, setCiudad] = useState("marcos paz");
+  const [ciudad, setCiudad] = useState("sidney");
 
   return (
     <WeatherProvider city={ciudad}>

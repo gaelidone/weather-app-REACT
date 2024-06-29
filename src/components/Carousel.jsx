@@ -3,10 +3,10 @@ import getTempWind from "../functions/getTempWind";
 import { useContext } from "react";
 import { ForecastContext } from "../hooks/WeatherProvider";
 
-function Carousel({ id, tipo }) {
+function Carousel({ id, type }) {
   const weatherData = useContext(ForecastContext)
-  const ComponentToRender = tipo === "Weather" ? WeatherHours : Wind;
-  const data = getTempWind(weatherData, tipo)
+  const ComponentToRender = type === "Weather" ? WeatherHours : Wind;
+  const data = getTempWind(weatherData, type)
   
   return (
     <div className="mt-4">

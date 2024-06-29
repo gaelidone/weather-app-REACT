@@ -1,3 +1,5 @@
+import { getIcons2 } from "./getIcons";
+
 const getTempWind = (weatherData, type) => {
 
   const day1 = weatherData[0].forecast;
@@ -13,13 +15,14 @@ const getTempWind = (weatherData, type) => {
       result.push({
         "hour" : getHour(obj.dt_txt),
         "temp" : Math.round(obj.main.temp),
-        "weather_main": obj.weather[0].main
+        "icon": getIcons2(obj)
       })
     }else if (type === "Wind") {
+      console.log(obj.wind.deg)
       result.push({
         "hour" : getHour(obj.dt_txt),
         "speed" : Math.round(obj.wind.speed),
-        "deg" : obj.deg
+        "deg" : obj.wind.deg
       })
     }
   }

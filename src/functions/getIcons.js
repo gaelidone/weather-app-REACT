@@ -1,9 +1,9 @@
-import cloud from "../../img/cloud.webp"; 
-import sun from "../../img/sun.webp"; 
-import sunCloud from "../../img/sun-cloud.webp"; 
-import moon from "../../img/moon.webp";
-import rain from "../../img/rain.webp";
-import rainTorment from "../../img/rain-torment.webp"; 
+import cloud from "../img/cloud.webp"; 
+import sun from "../img/sun.webp"; 
+import sunCloud from "../img/sun-cloud.webp"; 
+import moon from "../img/moon.webp";
+import rain from "../img/rain.webp";
+import rainTorment from "../img/rain-torment.webp"; 
 
 export const getIcons = (weatherParam, isNight) => {
   const weather = weatherParam.toLowerCase();
