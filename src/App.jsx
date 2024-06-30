@@ -7,18 +7,18 @@ import WrapToday from './components/WrapToday.jsx';
 import { WeatherProvider } from './hooks/WeatherProvider';
 
 function App() {
-  const [ciudad, setCiudad] = useState("marcos paz");
+  const [city, setCity] = useState("marcos paz");
   const [toggle, setToggle] = useState(false)
+
 
   const showToggle = () => {
     setToggle(!toggle);
     const body = document.getElementsByTagName('body');
     body[0].classList.toggle('no-scroll')
-
   }
 
   return (
-    <WeatherProvider city={ciudad}>
+    <WeatherProvider city={city}>
       <header className='bg-blackPri flex items-center justify-between px-4 py-2.5'>
         <div className='flex items-center gap-2'>
           <img src={logo} alt="logo WeatherApp" className='w-10' />
@@ -28,7 +28,7 @@ function App() {
           <i onClick={showToggle} className="bi bi-search px-2.5 py-1.5 bg-blackSec rounded-full cursor-pointer hover:bg-[#555]"></i>
           <i className="bi bi-geo-alt px-2.5 py-1.5 bg-indigo-700 rounded-full cursor-pointer hover:bg-indigo-600"></i>
         </div>
-        <ToggleMobile state={toggle} close={showToggle}/>
+        <ToggleMobile state={toggle} close={showToggle} />
       </header>
 
       <main className='bg-blackPri py-4 font-mono'>

@@ -1,7 +1,7 @@
 import React from 'react';
 import CardCity from './CardCity';
 import Input from './Input';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import getCity from '../functions/getCity';
 
 export function ToggleMobile({ state, close }) {

@@ -1,8 +1,14 @@
 const apiKey = '0da34ff0b705807431591ec725143c7e';
 
-export const getWeather = async (city) => {
-  let dataAPI = []
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+export const getWeather = async (city, country = '') => {
+  let dataAPI = [];
+  let url;
+
+  if (country) {
+    url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`;
+  } else {
+    url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  }  
   try {
     const res = await fetch(url);
     if (!res.ok) {
@@ -18,8 +24,13 @@ export const getWeather = async (city) => {
   }
 };
 
-export const getWeekDays = async (city) =>{
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+export const getWeekDays = async (city, country = '') =>{
+  let url;
+  if (country) {
+    url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${apiKey}&units=metric`;
+  } else {
+    url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  }    
   try {
     const res = await fetch(url);
     if (!res.ok) {
