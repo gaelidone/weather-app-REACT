@@ -1,21 +1,14 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'; import 'bootstrap/dist/css/bootstrap.min.css'; import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import logo from './img/weatherApp-logo.webp'
 import { ToggleMobile } from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
 import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
 import WrapToday from './components/WrapToday.jsx';
 import { WeatherProvider } from './hooks/WeatherProvider';
+import { AppContext, AppProvider } from './hooks/AppProvider';
 
 function App() {
-  const [city, setCity] = useState("marcos paz");
-  const [toggle, setToggle] = useState(false)
-
-
-  const showToggle = () => {
-    setToggle(!toggle);
-    const body = document.getElementsByTagName('body');
-    body[0].classList.toggle('no-scroll')
-  }
+  const { city, showToggle } = useContext(AppContext)
 
   return (
     <WeatherProvider city={city}>
@@ -28,7 +21,7 @@ function App() {
           <i onClick={showToggle} className="bi bi-search px-2.5 py-1.5 bg-blackSec rounded-full cursor-pointer hover:bg-[#555]"></i>
           <i className="bi bi-geo-alt px-2.5 py-1.5 bg-indigo-700 rounded-full cursor-pointer hover:bg-indigo-600"></i>
         </div>
-        <ToggleMobile state={toggle} close={showToggle} />
+        <ToggleMobile />
       </header>
 
       <main className='bg-blackPri py-4 font-mono'>

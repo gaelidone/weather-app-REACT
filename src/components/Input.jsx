@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useState } from "react"
+import { useContext } from "react";
+import { AppContext } from "../hooks/AppProvider";
 
-function Input({ setValue }) {
-
+function Input({  }) {
+  const {setValue} = useContext(AppContext)
 
   const handleChange = (event) => {
     setValue((event.target.value).toLowerCase());
