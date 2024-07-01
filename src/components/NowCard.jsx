@@ -7,7 +7,7 @@ function NowCard({ }) {
   let weatherData = useContext(WeatherContext);
   return (
     weatherData && (
-      <section className="card-sect max-w-[90%] flex-col gap-1">
+      <section className="card-sect w-full flex-col gap-1">
         <p className="text-gray-400">Now</p>
         <div className="flex items-center text-4xl">
           <h4 className="w-[55%]">{Math.round(weatherData.main.temp)}°C</h4>

@@ -11,8 +11,8 @@ function App() {
   const { city, showToggle } = useContext(AppContext)
   return (
     <WeatherProvider city={city}>
-      <header>
-        <div className="px-4 pt-3 flex items-center justify-between">
+      <header className='md:sticky top-0 z-30 bg-blackPri pb-2 blur-sm'>
+        <div className="px-4 pt-2 flex items-center justify-between">
           <div className='flex items-center gap-2'>
             <img src={logo} alt="logo WeatherApp" className='w-10' />
             <h2 className='font-mono font-bold text-xl'>WeatherApp</h2>
@@ -29,12 +29,18 @@ function App() {
         </div>
       </header>
 
-      <main className='bg-blackPri py-4 font-mono'>
-        <NowCard />
-        <h4 className='pt-3 pb-1.5 font-semibold w-[92%] mx-auto '>5 Days Forecast</h4>
-        <WeekCard />
-        <TodayHighlights />
-        <WrapToday />
+      <main className='pb-4 pt-2 font-mono flex flex-col items-center md:flex-row md:items-start md:gap-5 md:px-5'>
+        <div className='flex flex-col mb-4 max-w-[92.5%] w-full md:w-4/12 md:sticky md:top-16'>
+          <NowCard />
+          <h4 className='mt-4 pb-1.5 font-semibold'>5 Days Forecast</h4>
+          <WeekCard />
+        </div>
+
+        <div className='flex flex-col max-w-[92.5%] m-auto w-full'>
+          <TodayHighlights />
+          <WrapToday />
+        </div>
+
 
       </main>
 

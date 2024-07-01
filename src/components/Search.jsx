@@ -36,7 +36,7 @@ export function ToggleMobile({ }) {
 
 export const WrapInput = () => {
   return(
-    <div className='bg-blackSec rounded-xl px-3 py-1 hidden md:block'>
+    <div className='bg-blackSec rounded-xl px-3 py-1 hidden md:inline-block'>
       <Input classParam="bg-transparent outline-none" isDesktop={true}/>
     </div>
   )
