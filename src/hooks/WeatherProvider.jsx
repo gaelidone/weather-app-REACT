@@ -6,7 +6,7 @@ export const WeatherContext = React.createContext();
 export const ForecastContext = React.createContext();
 
 export function WeatherProvider({ children, city }) {
-  const fetchWeather = useCallback(() => getWeather(city), [city]);
+  const fetchWeather = useCallback(() => getWeather(city.name, city.country), [city]);
   const { data: weatherData, isLoading, error } = useFetchData(fetchWeather);
 
   return (

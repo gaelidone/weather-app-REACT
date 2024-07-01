@@ -61,7 +61,7 @@ export const getIcons2 = (weatherData, obj) => {
   
   let icon = "";
 
-  if (weather === "clouds") {
+  if (weather === "clouds" || weather === "squall") {
     if (description === "few clouds" && isNight === false) {
       icon = sunCloud;
     }else if (description === "few clouds") {
@@ -99,17 +99,17 @@ export const getWeatherIcon = (weatherData, i) => {
 
 }
 
-export const getIsNight = (obj) => {
-  const sunriseTimestamp = obj.sys.sunrise
-  const sunsetTimestamp = obj.sys.sunset
-  const timezoneOffset = obj.timezone
-  const now = new Date();
-  const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
-  const localTime = new Date(utcTime + (timezoneOffset * 1000));
+export function getIsNight(city) {
+  const currentTime = new Date().getTime() / 1000; // Convertimos a segundos
 
-  const sunrise = new Date((sunriseTimestamp + timezoneOffset) * 1000);
-  const sunset = new Date((sunsetTimestamp + timezoneOffset) * 1000);
+  const sunrise = city.sys.sunrise;
+  const sunset = city.sys.sunset;
 
-
-  return localTime < sunrise || localTime > sunset;
+  if (currentTime > sunset || currentTime < sunrise) {
+      return true; // Es de noche
+  } else {
+      return false; // Es de día
+  }
 }
+
+

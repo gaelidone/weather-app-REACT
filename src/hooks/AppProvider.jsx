@@ -1,12 +1,14 @@
 import React, { useState, createContext } from "react";
+import { useEffect } from "react";
 import getCity from "../functions/getCity";
+import { getWeather } from "../functions/getWeather";
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [city, setCity] = useState("london");
+  const [city, setCity] = useState({name: "london", country: "ca"});
   const [toggle, setToggle] = useState(false);
   const [value, setValue] = useState("")
-  const [listCities, setListCities] = useState([])
+  const [listCities, setListCities] = useState([]);
 
   const showToggle = () => {
     setToggle(prevToggle => !prevToggle);
@@ -17,15 +19,18 @@ export const AppProvider = ({ children }) => {
   const fetchCities = async (val) => {
     if (val.length >= 3) {
       const cities = await getCity(val);
-      console.log(cities)
       setListCities(cities)
     }else{
       setListCities([])
     }
   }
 
+  const changeCity = (cityParam, countryParam) => {
+    setCity({name: cityParam, country: countryParam})
+  }
+
   return(
-    <AppContext.Provider value={{city, setCity, toggle, setToggle, value, setValue, listCities, setListCities, fetchCities, showToggle}}>
+    <AppContext.Provider value={{city, setCity, toggle, setToggle, value, setValue, listCities, setListCities, fetchCities, showToggle, changeCity}}>
       {children}
     </AppContext.Provider>
   )

@@ -5,11 +5,10 @@ import { ToggleMobile } from './components/Search.jsx'; import NowCard from './c
 import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
 import WrapToday from './components/WrapToday.jsx';
 import { WeatherProvider } from './hooks/WeatherProvider';
-import { AppContext, AppProvider } from './hooks/AppProvider';
+import { AppContext } from './hooks/AppProvider';
 
 function App() {
   const { city, showToggle } = useContext(AppContext)
-
   return (
     <WeatherProvider city={city}>
       <header className='bg-blackPri flex items-center justify-between px-4 py-2.5'>
