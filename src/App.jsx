@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'; import 'bootstrap/dist/css/bootstrap.min.css'; import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import logo from './img/weatherApp-logo.webp'
-import { ToggleMobile } from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
+import logo from './img/weatherApp-logo.webp'; import Input from './components/Input';
+import { ToggleMobile, WrapInput } from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
 import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
-import WrapToday from './components/WrapToday.jsx';
+import WrapToday from './components/WrapToday.jsx'; import Location from './components/Location';
 import { WeatherProvider } from './hooks/WeatherProvider';
 import { AppContext } from './hooks/AppProvider';
 
@@ -11,16 +11,22 @@ function App() {
   const { city, showToggle } = useContext(AppContext)
   return (
     <WeatherProvider city={city}>
-      <header className='bg-blackPri flex items-center justify-between px-4 py-2.5'>
-        <div className='flex items-center gap-2'>
-          <img src={logo} alt="logo WeatherApp" className='w-10' />
-          <h2 className='font-mono font-bold text-xl'>WeatherApp</h2>
+      <header>
+        <div className="px-4 pt-3 flex items-center justify-between">
+          <div className='flex items-center gap-2'>
+            <img src={logo} alt="logo WeatherApp" className='w-10' />
+            <h2 className='font-mono font-bold text-xl'>WeatherApp</h2>
+          </div>
+          <WrapInput />
+          <Location isDesktop={true}/>
+
+          <div className="flex gap-2 md:hidden">
+            <i onClick={showToggle} className="bi bi-search px-2.5 py-1.5 bg-blackSec rounded-full cursor-pointer hover:bg-[#555]"></i>
+            <Location />
+          </div>
+
+          <ToggleMobile />
         </div>
-        <div className="flex gap-2">
-          <i onClick={showToggle} className="bi bi-search px-2.5 py-1.5 bg-blackSec rounded-full cursor-pointer hover:bg-[#555]"></i>
-          <i className="bi bi-geo-alt px-2.5 py-1.5 bg-indigo-700 rounded-full cursor-pointer hover:bg-indigo-600"></i>
-        </div>
-        <ToggleMobile />
       </header>
 
       <main className='bg-blackPri py-4 font-mono'>
@@ -29,7 +35,7 @@ function App() {
         <WeekCard />
         <TodayHighlights />
         <WrapToday />
-        
+
       </main>
 
       <footer className="bg-blackSec text-white py-4">
