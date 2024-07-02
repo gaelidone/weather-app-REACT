@@ -25,14 +25,14 @@ export function Sunrise({ info }) {
       <p className="text-gray-400 mb-2">Sunrise & Sunset</p>
       <div className="flex justify-between items-center px-2">
         <div className="flex gap-2 items-center">
-          <i className="bi bi-sun text-2xl"></i>
+          <i className="bi bi-sunrise text-2xl"></i>
           <div className="flex flex-col">
             <p className="text-sm text-gray-400">Sunrise</p>
             <p className="text-lg">{sunCycle[0]}</p>
           </div>
         </div>
         <div className="flex gap-2 items-center">
-          <i className="bi bi-moon text-2xl"></i>
+          <i className="bi bi-sunset text-2xl"></i>
           <div className="flex flex-col">
             <p className="text-sm text-gray-400">Sunset</p>
             <p className="text-lg">{sunCycle[1]}</p>

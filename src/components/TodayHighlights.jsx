@@ -8,7 +8,7 @@ function TodayHighlights({ }) {
   if (weatherData) {
     return (
       <section className="card-sect mt-0 w-full flex-col gap-2">
-        <h3 className="font-bold">Todays Highlights</h3>
+        <h4 className="font-bold text-lg">Todays Highlights</h4>
         <div className="flex flex-col gap-3">
 
           <div className="flex flex-col gap-3 lg:flex-row">
@@ -16,8 +16,22 @@ function TodayHighlights({ }) {
             <Sunrise info={weatherData} />
           </div>
 
+          <div className="flex flex-col gap-3 lg:flex-row">
+            <CardInfo
+              title="UV Index"
+              valueKey={weatherData.daily_data.uv}
+              icon="sun"
+            />
+            <CardInfo
+              title="Dew point"
+              valueKey={weatherData.daily_data.dew_point}
+              unit="°C"
+              icon="moisture"
+            />
+          </div>
+
           <div className="flex flex-col mt-2.5 mb-[-.5rem]">
-            <h4>Weather now</h4>
+            <h4 className="font-bold text-lg">Weather now</h4>
           </div>
           <div className="flex flex-col gap-3 md:flex-row">
             <CardInfo
