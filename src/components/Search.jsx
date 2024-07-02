@@ -35,23 +35,25 @@ export function ToggleMobile({ }) {
 
 
 export const WrapInput = () => {
-  const { listCities } = useContext(AppContext)
+  const { listCities } = useContext(AppContext);
 
   return (
-    <div className='relative bg-red-500 z-40'>
-      <div className="absolute w-80 bg-blackSec rounded-xl px-3 py-1 top-[-1rem] left-1/2 transform -translate-x-1/2 hidden md:inline-block">
-        <Input classParam="bg-transparent outline-none mb-2" isDesktop={true} />
-        <div className='flex flex-col gap-1'>
+    <div className="relative z-40">
+      <div className="absolute w-80 bg-blackBlur backdrop-blur-md rounded-xl px-3 py-1 top-[-1rem] left-1/2 transform -translate-x-1/2 hidden md:flex md:flex-col">
+        <Input classParam="bg-transparent outline-none mb-1" isDesktop={true} />
+        <div className="flex flex-col gap-1">
           {[...listCities].map((obj, index) => (
             <CardCity
               key={index}
               city={obj.name}
               country={obj.sys.country}
-            />)
-          )}
+              i={index}
+            />
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
 

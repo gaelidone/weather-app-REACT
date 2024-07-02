@@ -1,7 +1,5 @@
 import React, { useState, createContext } from "react";
-import { useEffect } from "react";
 import getCity from "../functions/getCity";
-import { getWeather } from "../functions/getWeather";
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
