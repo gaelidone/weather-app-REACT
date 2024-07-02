@@ -3,7 +3,13 @@ import getCity from "../functions/getCity";
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [city, setCity] = useState({name: "london", country: "ca"});
+
+  const initialCity = localStorage.getItem("city") || "London";
+  const initialCountry = localStorage.getItem("country") || "GB"
+
+  console.log(initialCity)
+
+  const [city, setCity] = useState({name: initialCity, country: initialCountry});
   const [toggle, setToggle] = useState(false);
   const [value, setValue] = useState("")
   const [listCities, setListCities] = useState([]);

@@ -11,23 +11,26 @@ function TodayHighlights({ }) {
         <h3 className="font-bold">Todays Highlights</h3>
         <div className="flex flex-col gap-3">
 
-          <div className="flex flex-col gap-3 md:flex-row">
+          <div className="flex flex-col gap-3 lg:flex-row">
             <TempMaxMin info={weatherData} />
             <Sunrise info={weatherData} />
           </div>
 
+          <div className="flex flex-col mt-2.5 mb-[-.5rem]">
+            <h4>Weather now</h4>
+          </div>
           <div className="flex flex-col gap-3 md:flex-row">
-            <CardInfo
-              title="Humidity"
-              valueKey={weatherData.main.humidity}
-              unit="%"
-              icon="droplet"
-            />
             <CardInfo
               title="Feels like"
               valueKey={weatherData.main.feels_like}
               unit="°C"
               icon="thermometer-half"
+            />
+            <CardInfo
+              title="Humidity"
+              valueKey={weatherData.main.humidity}
+              unit="%"
+              icon="droplet"
             />
           </div>
 
