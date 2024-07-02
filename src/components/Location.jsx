@@ -12,8 +12,7 @@ const Location = ({ isDesktop }) => {
       localStorage.setItem("country", city.country)
       Toastify({
         text: "Location saved",
-        duration: 1850,
-        close: true,
+        duration: 1900,
         gravity: "bottom", 
         position: "right", 
         stopOnFocus: true, 

@@ -7,11 +7,11 @@ export function TempMaxMin({ info }) {
       <div className="flex justify-between items-center px-4">
         <div className="flex gap-2 items-center">
           <i className="bi bi-thermometer-snow text-3xl text-sky-400"></i>
-          <p className="text-xl">{Math.round(info.main.temp_min)}</p>
+          <p className="text-xl">{Math.round(info.daily_data.temp_min)}</p>
         </div>
         <div className="flex gap-2 items-center">
           <i className="bi bi-thermometer-sun text-3xl text-red-500"></i>
-          <p className="text-xl">{Math.round(info.main.temp_max)}</p>
+          <p className="text-xl">{Math.round(info.daily_data.temp_max)}</p>
         </div>
       </div>
     </div>

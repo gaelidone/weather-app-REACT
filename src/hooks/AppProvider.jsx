@@ -7,8 +7,6 @@ export const AppProvider = ({ children }) => {
   const initialCity = localStorage.getItem("city") || "London";
   const initialCountry = localStorage.getItem("country") || "GB"
 
-  console.log(initialCity)
-
   const [city, setCity] = useState({name: initialCity, country: initialCountry});
   const [toggle, setToggle] = useState(false);
   const [value, setValue] = useState("")
