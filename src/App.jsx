@@ -1,6 +1,6 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'; import 'bootstrap/dist/css/bootstrap.min.css'; import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import logo from './img/weatherApp-logo.webp'; import Input from './components/Input';
+import logo from '../public/img/weatherApp-logo.webp';
 import { ToggleMobile, WrapInput } from './components/Search.jsx'; import NowCard from './components/NowCard.jsx';
 import WeekCard from './components/WeekCard.jsx'; import TodayHighlights from './components/TodayHighlights.jsx';
 import WrapToday from './components/WrapToday.jsx'; import Location from './components/Location';

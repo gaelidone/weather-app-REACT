@@ -1,5 +1,4 @@
 import Carousel from "./Carousel";
-import img from "../img/weatherApp-logo.webp";
 
 function WrapToday() {
   return (

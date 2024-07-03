@@ -18,7 +18,6 @@ export const getWeather = async (city, country = '') => {
     const dataWeek = await getWeekDays(city);
     const dataDaily = await getDailyData(city, country);
     dataNow.daily_data = dataDaily;
-    console.log(dataNow)
     dataAPI.push(dataNow, dataWeek)
     return dataAPI;
   } catch (error) {

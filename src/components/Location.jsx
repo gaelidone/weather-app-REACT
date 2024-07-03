@@ -34,12 +34,12 @@ const Location = ({ isDesktop }) => {
 
 
     return( isDesktop
-      ? <div onClick={handleLocation} className="hidden md:flex md:items-center gap-2 rounded-xl px-2 py-1 bg-violet-500 text-blackPri cursor-pointer hover:bg-purple-400">
+      ? <div onClick={handleLocation} className="hidden md:flex md:items-center gap-2 rounded-xl px-2 py-1 bg-purple-500 text-black cursor-pointer hover:bg-purple-400">
           <i className="bi bi-crosshair"></i>
           <p className="text-sm">Set Default Location</p>
         </div>
-      : <i onClick={handleLocation} className="bi bi-geo-alt px-2.5 py-1.5 bg-violet-500 
-        rounded-full cursor-pointer hover:bg-violet-400"></i>
+      : <i onClick={handleLocation} className="bi bi-geo-alt px-2.5 py-1.5 bg-purple-500 
+        rounded-full cursor-pointer hover:bg-purple-400"></i>
 
     )
 }

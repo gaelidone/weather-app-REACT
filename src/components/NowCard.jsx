@@ -11,11 +11,13 @@ function NowCard({ }) {
         <p className="text-gray-400">Now</p>
         <div className="flex items-center text-4xl">
           <h4 className="w-[55%]">{Math.round(weatherData.main.temp)}°C</h4>
-          <div className="w-20 h-20">
-            <img 
-              src={getIcons2(weatherData)} 
-              alt="weather icon cartoon" 
-              className="w-full h-full object-contain"/>
+          <div className="relative w-20 h-20">
+            <div className="absolute w-32 h-32 top-[-.75em] left-[-.15em]">
+              <img 
+                src={getIcons2(weatherData)} 
+                alt="weather icon cartoon" 
+                className="w-full h-full object-contain"/>
+            </div>
           </div>
         </div>
         <p className="text-gray-400">{weatherData.weather[0].description}</p>

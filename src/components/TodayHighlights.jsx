@@ -4,7 +4,6 @@ import { WeatherContext } from "../hooks/WeatherProvider";
 
 function TodayHighlights({ }) {
   const weatherData = useContext(WeatherContext)
-
   if (weatherData) {
     return (
       <section className="card-sect mt-0 w-full flex-col gap-2">
@@ -20,7 +19,7 @@ function TodayHighlights({ }) {
             <CardInfo
               title="UV Index"
               valueKey={weatherData.daily_data.uv}
-              icon="sun"
+              icon="sun text-yellow-500"
             />
             <CardInfo
               title="Dew point"
@@ -44,7 +43,7 @@ function TodayHighlights({ }) {
               title="Humidity"
               valueKey={weatherData.main.humidity}
               unit="%"
-              icon="droplet"
+              icon="droplet text-blue-400"
             />
           </div>
 

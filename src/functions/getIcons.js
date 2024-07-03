@@ -1,50 +1,3 @@
-import cloud from "../img/cloud.webp"; 
-import sun from "../img/sun.webp"; 
-import sunCloud from "../img/sun-cloud.webp"; 
-import moon from "../img/moon.webp";
-import rain from "../img/rain.webp";
-import rainTorment from "../img/rain-torment.webp"; 
-
-export const getIcons = (weatherParam, isNight) => {
-  const weather = weatherParam.toLowerCase();
-  let icon = '';
-  switch (weather) {
-    case "thunderstorm":
-      icon = 'bi bi-cloud-lightning-rain';
-      break;
-    case "drizzle":
-      icon = 'bi bi-cloud-drizzle';
-      break;
-    case "rain":
-      icon = 'bi bi-cloud-rain';
-      break;
-    case "snow":
-      icon = 'bi bi-cloud-snow';
-      break;
-    case "mist":
-    case "smoke":
-    case "haze":
-    case "dust":
-    case "fog":
-    case "sand":
-    case "ash":
-    case "squall":
-    case "tornado":
-      icon = 'bi bi-cloud-fog';
-      break;
-    case "clear":
-      icon = isNight ? 'bi bi-moon text-gray-300' : 'bi bi-brightness-high text-yellow-400';
-      break;
-    case "clouds":
-      icon = 'bi bi-cloud';
-      break;
-    default:
-      icon = 'bi bi-question-circle'; 
-      break;
-  }
-
-  return icon;
-}
 export const getIcons2 = (weatherData, obj) => {
   let weather; 
   let description; 
@@ -61,22 +14,28 @@ export const getIcons2 = (weatherData, obj) => {
   
   let icon = "";
 
-  if (weather === "clouds" || weather === "squall") {
+  if (weather === "clouds") {
     if (description === "few clouds" && isNight === false) {
-      icon = sunCloud;
+      icon = "partly-cloudy-day";
     }else if (description === "few clouds") {
-      icon = moon;
+      icon = "partly-cloudy-night";
     }else{
-      icon = cloud;
+      icon = "cloudy";
     }
   }else if (weather === "clear") {
-    icon = isNight ? moon : sun;
-  }else if (weather === "rain" || weather === "drizzle") {
-    icon = rain;
+    icon = isNight ? "clear-night" : "clear-day";
+  }else if (weather === "rain") {
+    icon = "rain";
   }else if (weather === "thunderstorm") {
-    icon = rainTorment;
+    icon = "thunderstorms-rain";
+  }else if (weather === "squall" || weather === "drizzle") {
+    icon = "drizzle"
+  }else if (weather === "snow") {
+    icon = "snow"
   }
-  return icon;
+
+  const src = `../../public/img/${icon}.svg`;
+  return src;
 }
 
 
@@ -100,7 +59,7 @@ export const getWeatherIcon = (weatherData, i) => {
 }
 
 export function getIsNight(city) {
-  const currentTime = new Date().getTime() / 1000; // Convertimos a segundos
+  const currentTime = new Date().getTime() / 1000; 
 
   const sunrise = city.sys.sunrise;
   const sunset = city.sys.sunset;
