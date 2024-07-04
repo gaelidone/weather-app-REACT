@@ -3,7 +3,6 @@ import { AppContext } from "../hooks/AppProvider";
 
 function Input({ classParam, isDesktop }) {
   const { setValue } = useContext(AppContext)
-
   const handleChange = (event) => {
     setValue((event.target.value).toLowerCase());
   }
