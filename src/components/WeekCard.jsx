@@ -2,7 +2,6 @@ import Days from "./Days";
 import { useContext } from "react";
 import { ForecastContext, WeatherContext } from "../hooks/WeatherProvider";
 
-
 function WeekCard({ }) {
   const weatherForecastData = useContext(ForecastContext);
   const weatherData = useContext(WeatherContext);
