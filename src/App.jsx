@@ -29,10 +29,9 @@ function App() {
         </div>
       </header>
 
-      <main className='pb-3 pt-2 font-mono flex flex-col items-center md:flex-row md:items-start md:gap-5 md:px-5'>
-        <div className='flex flex-col mb-4 max-w-[92.5%] w-full md:w-4/12'>
+      <main className='pb-3 pt-2 font-mono flex flex-col items-center lg:flex-row lg:items-start lg:gap-5 lg:px-5'>
+        <div className='flex flex-col gap-4 mb-4 max-w-[92.5%] w-full md:flex-row md:gap-5 lg:flex-col lg:w-6/12 xl:w-5/12'>
           <NowCard />
-          <h4 className='mt-4 pb-1.5 font-semibold'>5 Days Forecast</h4>
           <WeekCard />
         </div>
 

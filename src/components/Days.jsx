@@ -1,6 +1,7 @@
 import { getIcons2, getWeatherIcon } from "../functions/getIcons"
 
-function Days({ i, weatherData }) {
+function Days({ i, objTemp, weatherData }) {
+  console.log(objTemp)
   const iconWeather = getWeatherIcon(weatherData, i)
   i = weatherData.lenght >= 6 ? i += 1 : i;
   const getTemp = (array) => {
@@ -11,19 +12,23 @@ function Days({ i, weatherData }) {
 
   return (
     <div className="flex justify-between items-center">
-      <div className="flex gap-2 items-center w-[33%]">
+      <div className="flex gap-2 items-center w-[40%]">
         <div className="w-10 h-10">
           <img
             src={getIcons2(null, iconWeather)}
             alt="weather icon cartoon"
             className="w-full h-full object-contain" />
         </div>
-        <p className="text-xl">{getTemp(weatherData[i].forecast)}°C</p>
+        <div className="flex gap-1.5">
+          <p>{Math.round(objTemp.temp_max)}°</p>
+
+          <p className="text-gray-400">{Math.round(objTemp.temp_min)}°</p>
+        </div>
       </div>
-      <p className="text-gray-400 text-sm w-[33%] text-center">
+      <p className="text-gray-400 text-sm w-[20%] text-center">
         {weatherData[i].date.month} {weatherData[i].date.day}
       </p>
-      <p className="text-gray-400 text-sm w-[33%] text-end">
+      <p className="text-gray-400 text-sm w-[20%] text-end">
         {weatherData[i].date.dayName}
       </p>
     </div>

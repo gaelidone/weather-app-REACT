@@ -8,31 +8,31 @@ export const getWeather = async (city, country = '') => {
     url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`;
   } else {
     url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  }  
+  }
   try {
     const res = await fetch(url);
     if (!res.ok) {
       throw new Error('Network response was not ok');
     }
     const dataNow = await res.json();
-    const dataWeek = await getWeekDays(city);
-    const dataDaily = await getDailyData(city, country);
+    const dataWeek = await getWeekDays(city, country);
+    const dataDaily = await getDailyData(dataNow);
     dataNow.daily_data = dataDaily;
     dataAPI.push(dataNow, dataWeek)
     return dataAPI;
   } catch (error) {
     console.log(error);
-    throw error; 
+    throw error;
   }
 };
 
-export const getWeekDays = async (city, country = '') =>{
+export const getWeekDays = async (city, country = '') => {
   let url;
   if (country) {
     url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${apiKey}&units=metric`;
   } else {
     url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  }    
+  }
   try {
     const res = await fetch(url);
     if (!res.ok) {
@@ -78,26 +78,28 @@ const getArrayWeek = (data) => {
   return Object.values(days);
 }
 
-const getDailyData = async (city, country = '') => {
-  let apiKey2 = "7f019c0ce3dc449199775dae2b002dfd";
-  const url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=${country}&key=${apiKey2}&days=1&units=M`;
-
+const getDailyData = async (data) => {
+  const location = (data.coord.lat).toString() + "," + (data.coord.lon).toString()
+  const apiKey = "8jEhCIZdA6eeAGprZgkUFYj2tvQRVvsB"
+  const url = `https://api.tomorrow.io/v4/timelines?location=${location}&fields=temperatureMax,temperatureMin,uvIndex,dewPoint,precipitationProbability&units=metric&timesteps=1d&apikey=${apiKey}`;
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    const res = await fetch(url);
+    if (!res) {
+      console.log('Error fetching weather data:', error);
+      return;
     }
-    const data = await response.json();
-
-    const maxTemp = data.data[0].max_temp;
-    const minTemp = data.data[0].min_temp;
-    const uvIndex = data.data[0].uv;
-    const dewPoint = data.data[0].dewpt;
-
-    return { temp_max: maxTemp, temp_min: minTemp, uv: uvIndex, dew_point: dewPoint };
+    const data = await res.json();
+    const tempMax = data.data.timelines[0].intervals[0].values.temperatureMax;
+    const tempMin = data.data.timelines[0].intervals[0].values.temperatureMin;
+    const uvIndex = data.data.timelines[0].intervals[0].values.uvIndex;
+    const dewPoint = data.data.timelines[0].intervals[0].values.dewPoint;
+	  const forecastTemp = data.data.timelines[0].intervals
+	  .filter((_, index) => index !== 0)
+	  .map(x => ({ temp_max: x.values.temperatureMax, temp_min: x.values.temperatureMin }));
+	  return { temp_max: tempMax, temp_min: tempMin, uv: uvIndex, dew_point: dewPoint, forecast_temp: forecastTemp};
   } catch (error) {
     console.error('Error fetching weather data:', error);
-    throw error;
   }
-};
+}
+
 
